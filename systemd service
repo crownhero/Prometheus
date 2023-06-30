@@ -11,3 +11,7 @@ ExecStart=/home/ubuntu/prometheus-2.45.0-rc.1.linux-amd64/prometheus --config.fi
 
 [install]
 WantedBy=multi-user.target
+
+
+
+//This file should be created in this path: /etc/systemd/system/prometheus.service
