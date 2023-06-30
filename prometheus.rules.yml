@@ -1,0 +1,7 @@
+groups:
+- name: cpu-node
+  rules:
+  - record: job_instance_mode:node_cpu_seconds:avg_rate5m
+
+
+//This is just a rule to check the nodes cpu utilization
