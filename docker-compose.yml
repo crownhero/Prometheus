@@ -28,3 +28,13 @@ services:
     container_name: redis
     ports:
     - 6379:6379
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=passwd
+    depends_on:
+      - prometheus
+      - cadvisor
