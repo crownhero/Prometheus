@@ -1,0 +1,3 @@
+USED DISK SPACE QUERY:node_filesystem_size_bytes{job="ec2-infra-true-web",instance="true-web",device!~"/dev/loop.*", device!~"tmpfs|nsfs", device!="gvfsd-fuse"} - node_filesystem_avail_bytes{job="jenkins-node",instance="localhost:9100"}
+
+AVAILABLE DISK SPACE QUERY: node_filesystem_avail_bytes{job="ec2-infra-true-web",instance="true-web",device!~"/dev/loop.*",device!~"tmpfs|nsfs",device!="gvfsd-fuse"}
