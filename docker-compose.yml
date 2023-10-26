@@ -32,11 +32,13 @@ services:
     image: grafana/grafana
     container_name: grafana
     ports:
-      - 3000:3000
+    - 3000:3000
     volumes:
-      - grafana_storage:/var/lib/grafana    #mapped with a docker volume for consistency
+    - grafana_storage:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=passwd
     depends_on:
       - prometheus
       - cadvisor
+volumes:
+  grafana_storage:
