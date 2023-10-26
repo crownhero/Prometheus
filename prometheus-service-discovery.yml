@@ -5,19 +5,42 @@ scrape_configs:
       - targets:
         - cadvisor:8080
 
-  - job_name: 'ec2-infra'
+  - job_name: 'ec2-infra-true-web'  
     metrics_path: /metrics
     ec2_sd_configs:
       - region: eu-west-2
         port: 9100
-        access_key: <key>
+        access_key: <secrets>
         secret_key: <secrets>
-        profile: iam-role-instance-profile-arn
+        profile: iam-instance-profile
         filters:
           - name: tag:prometheus
             values: ['true-web']
+
+  - job_name: 'ec2-infra-true-prom' 
+    metrics_path: /metrics
+    ec2_sd_configs:
+      - region: eu-west-2
+        port: 9100
+        access_key: <secrets>
+        secret_key: <secrets>
+        profile: iam-instance-profile
+        filters:
+          - name: tag:prometheus
+            values: ['true-prom']
+  - job_name: 'ec2-infra-true-jenkins'  
+    metrics_path: /metrics
+    ec2_sd_configs:
+      - region: eu-west-2
+        port: 9100
+        access_key: <secrets>
+        secret_key: <secrets>
+        profile: iam-instance-profile
+        filters:
+          - name: tag:prometheus
+            values: ['true-jenkins']
     relabel_configs:
-      - source_labels: [__meta_ec2_tag_prometheus]
-        regex: (.+)
-        target_label: instance
-        replacement: $1
+     - source_labels: [__meta_ec2_tag_prometheus]
+       regex: (.+)
+       target_label: instance
+       replacement: $1
